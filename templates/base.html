@@ -2,135 +2,141 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    {% block meta%}
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% endblock %}
+    <head>
+        {% block meta%}
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% endblock %}
 
-    {% block extra_meta %}
-    {% endblock %}
+        {% block extra_meta %}
+        {% endblock %}
 
-    {% block corecss %}
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    {% endblock %}
+        {% block corecss %}
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <!-- Google Fonts with pre connect -->
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,700&family=Source+Sans+Pro:wght@400;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+            <!-- Static base.css -->
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
+        {% block extra_css %}
+        {% endblock %}
 
-    {% block corejs %}
-        <!-- Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    {% endblock %}
+        {% block corejs %}
+            <!-- Bootstrap Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
+        {% block extra_js %}
+        {% endblock %}
 
-    <title>Django Test {% block extra_title %}{% endblock %}</title>
-  </head>
-  <body>
-    <header class="container-fluid fixed-top">
-        <!-- Logo -->
-        <div class="row">
-            <div class="col col-lg-4">
-                <a class="navbar-brand" id="logo" class="nav-link" href="{% url 'home' %}">
-                    <h2 class="logo-top">Inside Out</h2>
-                    <h3 class="logo-bottom">Garden Furniture</h3>
-                </a>
-            </div>
-            <!-- Search -->
-            <div class="col col-lg-4">
-                <form method="GET" action="">
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                        <button type="submit" class="form-control">
-                            <span class="icon">
-                            <i class="fas fa-search"></i>
-                            </span>
-                        </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- My Account -->
-            <div class="col col-lg-4 my-account">
-                <ul>
-                    <!-- Dropdown-->
-                    <li class="nav-item dropdown">
-                        <span class="nav-link" id="my-account" role="button" 
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My Account <i class="fas fa-caret-down"></i>
-                        </span>
-                        <!-- Account Dropdown links-->
-                        <div class="dropdown-menu dd-menu" aria-labelledby="my-account">
-                            {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a class="dropdown-item dd-item" href="#">Admin</a>
-                                {% endif %}
-                                <a class="dropdown-item dd-item" href="#">Profile</a>
-                                <a class="dropdown-item dd-item" href="{% url 'account_logout' %}">Logout</a>
-                            {% else %}
-                            <a class="dropdown-item dd-item" href="{% url 'account_signup' %}">Register</a>
-                            <a class="dropdown-item dd-item" href="{% url 'account_login' %}">Login</a>
-                            {% endif %}
-                        </div>
-                    </li>
-
-                    <!-- Shopping Cart -->
-                    <li>
-                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="#">
-                            <div class="text-center">
-                                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
-                                <p class="my-0">
-                                    {% if grand_total %}
-                                        €{{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                        €0.00
-                                    {% endif %}
-                                </p>
+        <title>Django Test {% block extra_title %}{% endblock %}</title>
+    </head>
+    <body class="bg-body-color">
+        <header class="container-fluid fixed-top">
+            <!-- Logo -->
+            <div class="row">
+                <div class="col col-lg-4">
+                    <a id="logo" href="{% url 'home' %}">
+                        <h2 id="logo-top">Inside Out</h2>
+                        <h3 id="logo-bottom">Garden Furniture</h3>
+                    </a>
+                </div>
+                <!-- Search -->
+                <div class="col col-lg-4">
+                    <form method="GET" action="">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                            <div class="input-group-append">
+                            <button type="submit" class="form-control">
+                                <span class="icon">
+                                <i class="fas fa-search"></i>
+                                </span>
+                            </button>
                             </div>
-                        </a>
-                    </li>
+                        </div>
+                    </form>
+                </div>
+                <!-- My Account -->
+                <div class="col col-lg-4 my-account">
+                    <ul>
+                        <!-- Dropdown-->
+                        <li class="nav-item dropdown">
+                            <span class="nav-link" id="my-account" role="button" 
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                My Account <i class="fas fa-caret-down"></i>
+                            </span>
+                            <!-- Account Dropdown links-->
+                            <div class="dropdown-menu dd-menu" aria-labelledby="my-account">
+                                {% if request.user.is_authenticated %}
+                                    {% if request.user.is_superuser %}
+                                        <a class="dropdown-item dd-item" href="#">Admin</a>
+                                    {% endif %}
+                                    <a class="dropdown-item dd-item" href="#">Profile</a>
+                                    <a class="dropdown-item dd-item" href="{% url 'account_logout' %}">Logout</a>
+                                {% else %}
+                                <a class="dropdown-item dd-item" href="{% url 'account_signup' %}">Register</a>
+                                <a class="dropdown-item dd-item" href="{% url 'account_login' %}">Login</a>
+                                {% endif %}
+                            </div>
+                        </li>
 
-                </ul>
-            </div>
-        </div>
+                        <!-- Shopping Cart -->
+                        <li>
+                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="#">
+                                <div class="text-center">
+                                    <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                                    <p class="my-0">
+                                        {% if grand_total %}
+                                            €{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            €0.00
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
 
-        <!-- <div class="row"> -->
-            <!-- Bootstrap Navbar with modifications-->
-            <!-- <nav class="navbar navbar-expand-lg navbar-dark"> -->
-                <!-- Navbar Collapse Button -->
-                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
-                <!-- Navbar Collapse -->
-                <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
-                    <!-- Navbar Menu -->
-                    <!-- <ul class="navbar-nav" id="nav-menu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
                     </ul>
                 </div>
-            </nav>
-        </div> -->
-        
-       
-        
-    </header>
+            </div>
+
+            <!-- <div class="row"> -->
+                <!-- Bootstrap Navbar with modifications-->
+                <!-- <nav class="navbar navbar-expand-lg navbar-dark"> -->
+                    <!-- Navbar Collapse Button -->
+                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+                    <!-- Navbar Collapse -->
+                    <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+                        <!-- Navbar Menu -->
+                        <!-- <ul class="navbar-nav" id="nav-menu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div> -->
+            
+            
+            
+        </header>
 
     {% if messages %}
         <div class="message-container"></div>
@@ -138,12 +144,12 @@
 
     {% block page-header %}
     {% endblock %}
-    
+
     {% block content %}
     {% endblock %}
 
     {% block postloadjs %}
     {% endblock %}
-    
-  </body>
+
+    </body>
 </html>
