@@ -31,7 +31,106 @@
     <title>Django Test {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top">
+        <!-- Logo -->
+        <div class="row">
+            <div class="col col-lg-4">
+                <a class="navbar-brand" id="logo" class="nav-link" href="{% url 'home' %}">
+                    <h2 class="logo-top">Inside Out</h2>
+                    <h3 class="logo-bottom">Garden Furniture</h3>
+                </a>
+            </div>
+            <!-- Search -->
+            <div class="col col-lg-4">
+                <form method="GET" action="">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <div class="input-group-append">
+                        <button type="submit" class="form-control">
+                            <span class="icon">
+                            <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- My Account -->
+            <div class="col col-lg-4 my-account">
+                <ul>
+                    <!-- Dropdown-->
+                    <li class="nav-item dropdown">
+                        <span class="nav-link" id="my-account" role="button" 
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My Account <i class="fas fa-caret-down"></i>
+                        </span>
+                        <!-- Account Dropdown links-->
+                        <div class="dropdown-menu dd-menu" aria-labelledby="my-account">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}
+                                    <a class="dropdown-item dd-item" href="#">Admin</a>
+                                {% endif %}
+                                <a class="dropdown-item dd-item" href="#">Profile</a>
+                                <a class="dropdown-item dd-item" href="{% url 'account_logout' %}">Logout</a>
+                            {% else %}
+                            <a class="dropdown-item dd-item" href="{% url 'account_signup' %}">Register</a>
+                            <a class="dropdown-item dd-item" href="{% url 'account_login' %}">Login</a>
+                            {% endif %}
+                        </div>
+                    </li>
+
+                    <!-- Shopping Cart -->
+                    <li>
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="#">
+                            <div class="text-center">
+                                <div><i class="fas fa-shopping-cart fa-lg"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                        €{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                        €0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="row"> -->
+            <!-- Bootstrap Navbar with modifications-->
+            <!-- <nav class="navbar navbar-expand-lg navbar-dark"> -->
+                <!-- Navbar Collapse Button -->
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <!-- Navbar Collapse -->
+                <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+                    <!-- Navbar Menu -->
+                    <!-- <ul class="navbar-nav" id="nav-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div> -->
+        
+       
+        
+    </header>
 
     {% if messages %}
         <div class="message-container"></div>
