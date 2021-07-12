@@ -83,6 +83,11 @@ body {
 }
 
 #account .icons {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+}
+
+.fa-shopping-cart {
     font-size: 2rem;
 }
 
@@ -96,4 +101,16 @@ body {
 .user-account li {
     list-style: none;
     display: inline-block;
+}
+
+.grand-total {
+    font-size: 1.5rem;
+    color: #2D3636;
+}
+
+/*------ Banner -------*/
+
+#banner {
+    background-color: #B2CAD8;
+    padding: .5rem;
 }

@@ -66,8 +66,8 @@
                     </form>
                 </div>
                 <!-- My Account -->
-                <div class="col col-lg-4 user-account">
-                    <ul>
+                <div class="col col-lg-4">
+                    <ul class="user-account">
                         <!-- Dropdown-->
                         <li class="nav-item dropdown">
                             <span class="nav-link" id="account" role="button" 
@@ -90,11 +90,11 @@
                         </li>
 
                         <!-- Shopping Cart -->
-                        <li class="cart">
+                        <li class="shopping-cart">
                             <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="#">
                                 <div>
-                                    <div><i class="fas fa-shopping-cart icons"></i></div>
-                                    <p>
+                                    <div class="cart"><i class="fas fa-shopping-cart icons"></i></div>
+                                    <p class="grand-total">
                                         {% if grand_total %}
                                             €{{ grand_total|floatformat:2 }}
                                         {% else %}
@@ -137,6 +137,13 @@
                     </div>
                 </nav>
             </div> -->
+
+        <!-- Banner -->
+        <div id="banner" class="row text-center">
+            <div class="col">
+                <h4 class="logo-font">Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
+            </div>            
+        </div>
             
             
             
