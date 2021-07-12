@@ -8,13 +8,13 @@
 body {
     height: 100%;
     font-family: "Source Sans Pro", sans-serif;
-    color: 2D3636;
+    color: #2D3636;
 }
 
 /*------ Colors -------*/
 
 #bg-body-color {
-    background-color: #F6F6F6;
+    background-color: #f0eeee;
 }
 
 #bg-color-footer {
@@ -44,7 +44,7 @@ body {
     color: #097485;
     font-size: 2.5rem;
     font-weight: 500;
-    letter-spacing: .3rem;
+    letter-spacing: .2rem;
 }
 
 /*------ Headings -------*/
@@ -52,4 +52,48 @@ body {
 .heading {
     font-family: "Source Serif Pro", serif;
     font-weight: 600;
+}
+
+/*------ Search Bar -------*/
+
+.search {
+    padding-top: 3rem;
+}
+
+.search-input {
+    width: 80%;
+}
+
+.search-bar {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.search-button {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+
+/*------ Icons -------*/
+
+.icons {
+    color: #2D3636;
+    font-size: 1.5rem;
+}
+
+#account .icons {
+    font-size: 2rem;
+}
+
+.user-account {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+.user-account li {
+    list-style: none;
+    display: inline-block;
 }
