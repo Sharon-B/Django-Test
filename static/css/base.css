@@ -5,12 +5,23 @@
     font-size: 10px;
 }
 
-body {
+html {
     height: 100%;
+}
+
+body {
+    /* height: calc(100vh - 164px); */
     font-family: "Source Sans Pro", sans-serif;
     color: #2D3636;
 }
 
+/* .header-container {
+    padding-top: 16rem;
+} */
+
+main {
+    padding-top: 16rem;
+}
 /*------ Colors -------*/
 
 #bg-body-color {
