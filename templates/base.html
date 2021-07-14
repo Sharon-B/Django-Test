@@ -42,7 +42,7 @@
         <header class="container-fluid fixed-top">
             <!-- Logo -->
             <div class="row">
-                <div class="col-12 col-lg-4">
+                <div class="col-12 col-md-4">
                     <div id="logo">
                         <a href="{% url 'home' %}">
                             <h2 id="logo-top">Inside Out</h2>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <!-- Search -->
-                <div class="col col-lg-4 search d-none d-lg-flex">
+                <div class="col col-md-4 search d-none d-md-flex">
                     <form method="GET" action="">
                         <div class="input-group search-input">
                             <input type="text" name="q" class="form-control search-bar" placeholder="Search..." aria-label="Search..." aria-describedby="button-addon2">
@@ -66,7 +66,7 @@
                     </form>
                 </div>
                 <!-- My Account -->
-                <div class="col col-lg-4 d-none d-lg-flex">
+                <div class="col col-md-4 d-none d-md-flex account-status">
                     <ul class="user-account">
                         <!-- Dropdown-->
                         <li class="nav-item dropdown">
@@ -75,7 +75,7 @@
                                 <i class="far fa-user icons"></i>
                             </span>
                             <!-- Account Dropdown links-->
-                            <div class="dropdown-menu dd-menu" aria-labelledby="account">
+                            <div class="dropdown-menu dd-menu" aria-labelledby="#account">
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
                                         <a class="dropdown-item dd-item" href="#">Admin</a>
@@ -107,19 +107,17 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row navigation">
                 <!-- Bootstrap Navbar with modifications-->
-                <nav class="navbar navbar-expand-lg navbar-light">
+                {% include 'includes/mobile-header.html' %}
+                <nav class="navbar navbar-expand-md navbar-light">
                     <div class="col-3">
                         <!-- Navbar Collapse Button -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#main-nav-toggle"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>  
                     </div>
-                    {% include 'includes/mobile-header.html' %}
                     {% include 'includes/main-nav.html' %}
-
                 </nav>
             </div>
 
