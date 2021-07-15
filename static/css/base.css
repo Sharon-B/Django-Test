@@ -84,6 +84,15 @@ main {
     border-bottom-right-radius: 1rem;
 }
 
+.search-dd-menu {
+    width: 38rem;
+    border: none;
+}
+
+#nav-menu .nav-link {
+    font-size: 1.8rem;
+}
+
 .navbar {
     width: 25%;
 }
@@ -143,6 +152,12 @@ main {
 
     .navigation {
         padding-top: 1.5rem;
+    }
+
+    
+
+    #nav-menu .nav-link {
+        font-size: 2.6rem;
     }
 
     .account-status {
