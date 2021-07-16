@@ -91,11 +91,21 @@ main {
 
 #nav-menu .nav-link {
     font-size: 1.8rem;
+    margin-right: 3rem;
 }
 
 .navbar {
-    width: 25%;
+    width: 100%;
 }
+
+#nav-menu {
+    width: 100%;
+    justify-content: center;
+    /* justify-content: flex-end;
+    margin-right: 3rem; */
+ }
+
+
 
 .navigation {
     padding-top: 2rem;
