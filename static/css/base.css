@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    /* height: calc(100vh - 164px); */
+    min-height: 100vh;
     font-family: "Source Sans Pro", sans-serif;
     color: #2D3636;
 }
@@ -25,7 +25,7 @@ main {
 /*------ Colors -------*/
 
 #bg-body-color {
-    background-color: #f0eeee;
+    background-color: #F6F6F6;
 }
 
 #bg-color-footer {
@@ -101,16 +101,20 @@ main {
 #nav-menu {
     width: 100%;
     justify-content: center;
-    /* justify-content: flex-end;
-    margin-right: 3rem; */
+    position: absolute;
+    background-color: #F6F6F6;
+
  }
 
 
 
 .navigation {
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
 }
 
+#banner {
+    padding-top: 21rem;
+}
 /*------ Icons -------*/
 
 .icons {
@@ -146,6 +150,41 @@ main {
     padding: .5rem;
 }
 
+/*------ Footer -------*/
+
+.footer {
+    min-height: 4rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#social-icon-links {
+    list-style: none;
+    text-align: right;
+    padding-top: 1rem;
+}
+
+#social-icon-links li {
+    display: inline;
+    font-size: 2rem;
+}
+
+#social-icon-links li a {
+    text-decoration: none;
+}
+
+#social-icon-links .fab {
+    font-size: 2rem;
+    padding: 1rem;
+    color:  #2D3636;
+}
+
+#social-icon-links .fab:hover {
+    opacity: .5;
+}
+
 /*----------------- Media Queries ----------------*/
 
 
@@ -164,8 +203,6 @@ main {
         padding-top: 1.5rem;
     }
 
-    
-
     #nav-menu .nav-link {
         font-size: 2.6rem;
     }
@@ -182,8 +219,6 @@ main {
 
 /*-- Large Screen--*/
 @media only screen and (min-width: 992px) {
-
-    
 
     .user-account {
         margin-right: 4rem;
