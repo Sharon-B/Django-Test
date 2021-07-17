@@ -10,17 +10,21 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+
+    /* height: calc(100vh - 160px); */
+
     font-family: "Source Sans Pro", sans-serif;
     color: #2D3636;
+
+    /* display: flex;
+    flex-direction: column; */
 }
 
-/* .header-container {
-    padding-top: 16rem;
-} */
+
 
 main {
-    padding-top: 21rem;
+    padding-top: 18rem;                  /*------*/
 }
 /*------ Colors -------*/
 
@@ -59,9 +63,14 @@ main {
 
 /*------ Headings -------*/
 
-.heading {
-    font-family: "Source Serif Pro", serif;
-    font-weight: 600;
+.heading {                          /*------*/
+    /* font-family: "Source Serif Pro", serif;              Remove Google Font import. */
+    font-weight: 400;
+    font-size: 2.4rem;
+    margin: 1.5rem auto; 
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
 }
 
 /*------ Search Bar -------*/
@@ -70,9 +79,9 @@ main {
     padding-top: 3rem;
 }
 
-.search-input {
-    width: 80%;
-}
+/* .search-input {
+    width: 30rem;
+} */
 
 .search-bar {
     border-top-left-radius: 1rem;
@@ -84,10 +93,12 @@ main {
     border-bottom-right-radius: 1rem;
 }
 
-.search-dd-menu {
-    width: 38rem;
+.search-dd-menu {       /*------*/
+    width: 24rem;
     border: none;
 }
+
+/*------ Navigation -------*/        /*------*/
 
 #nav-menu .nav-link {
     font-size: 1.8rem;
@@ -99,18 +110,39 @@ main {
 }
 
 #nav-menu {
-    width: 100%;
+    width: 95%;                     /*------*/
     justify-content: center;
     position: absolute;
     background-color: #F6F6F6;
-
+    border: 1px solid rgba(0,0,0,.15);      /*------*/
  }
 
+.nav-item {
+    margin-left: 1rem;          /*------*/
+ }
 
+.navbar-light .navbar-nav .nav-link {      /*------*/
+    color: #2D3636;
+}
+
+.dropdown-item {
+    font-size: 1.8rem;
+    color: #2D3636;
+ }
+
+.dd-menu {
+    background-color: #F6F6F6;                    /*------*/
+ }
+
+.dropdown-menu.dd-menu.show {
+    margin-top: 1.6rem;
+}
 
 .navigation {
     /* padding-top: 2rem; */
 }
+
+/*------ Banner -------*/
 
 #banner {
     padding-top: 21rem;
@@ -158,6 +190,8 @@ main {
     right: 0;
     bottom: 0;
     left: 0;
+
+    /* margin-top: auto; */
 }
 
 #social-icon-links {
@@ -185,6 +219,8 @@ main {
     opacity: .5;
 }
 
+
+
 /*----------------- Media Queries ----------------*/
 
 
@@ -207,12 +243,31 @@ main {
         font-size: 2.6rem;
     }
 
+    #nav-menu {                 /*------*/
+        width: 100%;
+        border: none;
+        /* margin-bottom: 5rem; */
+     }
+
+    .search-input {                 /*------*/
+        width: 30rem;
+        margin-left: 2rem;
+    }
+    
     .account-status {
         justify-content: flex-end;
     }
 
     .user-account {
         margin-right: 3rem;
+    }
+
+    #banner {
+        margin-top: 2rem;           /*------*/
+    }
+
+    main {
+        padding-top: 16rem;      /*------*/
     }
     
 }
@@ -224,10 +279,6 @@ main {
         margin-right: 4rem;
     }
 
-    main {
-        padding-top: 18rem;
-    }
-
     #logo-top {
         font-size: 5rem;
     }
@@ -236,9 +287,27 @@ main {
         font-size: 2.5rem;
     }
 
+    .search-input {             /*------*/
+        width: 36rem;
+        margin-left: 4rem;
+    }
+
     #account .icons {
         font-size: 2.5rem;
         margin-right: 1rem;
+    }
+
+    main {
+        padding-top: 14rem;      /*------*/
+    }
+
+    #hero-image {                    /*------*/
+        max-height: 75vh;
+        object-fit: cover;
+    }
+
+    .heading {                          /*------*/
+        font-size: 3.6rem;
     }
 
 }
