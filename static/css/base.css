@@ -21,8 +21,6 @@ body {
     flex-direction: column; */
 }
 
-
-
 main {
     padding-top: 18rem;                  /*------*/
 }
@@ -42,6 +40,8 @@ main {
     padding: 0;
     margin-left: .5rem;
     text-decoration: none;
+
+    /* margin: auto; */
 }
 
 #logo a {
@@ -138,9 +138,9 @@ main {
     margin-top: 1.6rem;
 }
 
-.navigation {
-    /* padding-top: 2rem; */
-}
+/* .navigation {
+    padding-top: 2rem;
+} */
 
 /*------ Banner -------*/
 
