@@ -18,6 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('name',)
 
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'display_name',
