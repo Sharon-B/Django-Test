@@ -13,7 +13,7 @@ body {
     /* height: 100vh; */
 
     /* height: calc(100vh - 160px); */
-
+    height: calc(100vh - 164px);
     font-family: "Source Sans Pro", sans-serif;
     color: #2D3636;
 
@@ -21,9 +21,6 @@ body {
     flex-direction: column; */
 }
 
-main {
-    padding-top: 18rem;                  /*------*/
-}
 /*------ Colors -------*/
 
 #bg-body-color,
@@ -181,15 +178,17 @@ main {
     padding: .5rem;
 }
 
-/*------ Banner -------*/
+/*------ Header Container -------*/
 
-/* #banner {
-    padding-top: 21rem;
-} */
+.header-container {
+    padding-top: 16rem;
+}
 
 /*------ Hero Image -------*/
 #hero-image {                     /*------*/
-    padding-top: 16rem;
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
 }
 
 /*------ Footer -------*/
@@ -271,12 +270,12 @@ main {
         margin-top: 2rem;           /*------*/
     }
 
-    /* main {
-        padding-top: 16rem;      /*------
+    /* .header-container {
+        padding-top: 16rem;
     } */
 
-    /* #hero-image {                     
-        padding-top: 16rem;
+    /* main {
+        padding-top: 16rem;      /*------
     } */
     
 }
@@ -310,10 +309,8 @@ main {
         padding-top: 18rem;      
     } */
 
-    #hero-image {                     /*------*/
+    .header-container {
         padding-top: 18rem;
-        max-height: 75vh;
-        object-fit: cover;   
     }
 
     .heading {                          /*------*/
