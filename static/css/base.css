@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    height: 100vh;
+    /* height: 100vh; */
 
     /* height: calc(100vh - 160px); */
 
@@ -26,7 +26,8 @@ main {
 }
 /*------ Colors -------*/
 
-#bg-body-color {
+#bg-body-color,
+.bg-header-color {
     background-color: #F6F6F6;
 }
 
@@ -93,12 +94,13 @@ main {
     border-bottom-right-radius: 1rem;
 }
 
-.search-dd-menu {       /*------*/
+.search-dd-menu {       
     width: 24rem;
     border: none;
+    background-color: #F6F6F6;
 }
 
-/*------ Navigation -------*/        /*------*/
+/*------ Navigation -------*/        
 
 #nav-menu .nav-link {
     font-size: 1.8rem;
@@ -110,15 +112,15 @@ main {
 }
 
 #nav-menu {
-    width: 95%;                     /*------*/
+    width: 95%;                     
     justify-content: center;
     position: absolute;
     background-color: #F6F6F6;
-    border: 1px solid rgba(0,0,0,.15);      /*------*/
+    border: 1px solid rgba(0,0,0,.15);      
  }
 
 .nav-item {
-    margin-left: 1rem;          /*------*/
+    margin-left: 1rem;          
  }
 
 .navbar-light .navbar-nav .nav-link {      /*------*/
@@ -131,10 +133,10 @@ main {
  }
 
 .dd-menu {
-    background-color: #F6F6F6;                    /*------*/
+    background-color: #F6F6F6;                    
  }
 
-.dropdown-menu.dd-menu.show {
+.dropdown-menu.dd-menu.show {                   
     margin-top: 1.6rem;
 }
 
@@ -142,11 +144,7 @@ main {
     padding-top: 2rem;
 } */
 
-/*------ Banner -------*/
 
-#banner {
-    padding-top: 21rem;
-}
 /*------ Icons -------*/
 
 .icons {
@@ -179,19 +177,26 @@ main {
 
 #banner {
     background-color: #B2CAD8;
+    padding-top: 21rem;
     padding: .5rem;
+}
+
+/*------ Banner -------*/
+
+/* #banner {
+    padding-top: 21rem;
+} */
+
+/*------ Hero Image -------*/
+#hero-image {                     /*------*/
+    padding-top: 16rem;
 }
 
 /*------ Footer -------*/
 
 .footer {
     min-height: 4rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    /* margin-top: auto; */
+    margin-top: auto;
 }
 
 #social-icon-links {
@@ -243,13 +248,13 @@ main {
         font-size: 2.6rem;
     }
 
-    #nav-menu {                 /*------*/
+    #nav-menu {                 
         width: 100%;
         border: none;
         /* margin-bottom: 5rem; */
      }
 
-    .search-input {                 /*------*/
+    .search-input {                 
         width: 30rem;
         margin-left: 2rem;
     }
@@ -266,8 +271,12 @@ main {
         margin-top: 2rem;           /*------*/
     }
 
-    main {
-        padding-top: 16rem;      /*------*/
+    /* main {
+        padding-top: 16rem;      /*------
+    } */
+
+    #hero-image {                     /*------*/
+        padding-top: 16rem;
     }
     
 }
@@ -297,13 +306,14 @@ main {
         margin-right: 1rem;
     }
 
-    main {
-        padding-top: 14rem;      /*------*/
-    }
+    /* main {
+        padding-top: 18rem;      
+    } */
 
-    #hero-image {                    /*------*/
+    #hero-image {                     /*------*/
+        padding-top: 18rem;
         max-height: 75vh;
-        object-fit: cover;
+        object-fit: cover;   
     }
 
     .heading {                          /*------*/

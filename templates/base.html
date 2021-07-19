@@ -39,7 +39,7 @@
         <title>Django Test {% block extra_title %}{% endblock %}</title>
     </head>
     <body id="bg-body-color">
-        <header class="container-fluid fixed-top">
+        <header class="container-fluid fixed-top bg-header-color">
             <!-- Logo -->
             <div class="row">
                 <div class="col-12 col-md-4">
@@ -109,9 +109,7 @@
             </div>
             <div class="row navigation">
                 <!-- Bootstrap Navbar with modifications-->
-                
                 <nav class="navbar navbar-expand-md navbar-light">
-                    
                     <!-- <div class="col-3"> -->
                         <!-- Navbar Collapse Button -->
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,21 +118,16 @@
                     <!-- </div> -->
                     {% include 'includes/mobile-header.html' %}
                     {% include 'includes/main-nav.html' %}
-                    
                 </nav>
             </div>
 
-           
+            <!-- Banner -->
+            <div id="banner" class="row text-center">
+                <div class="col">
+                    <h4 class="logo-font">Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
+                </div>            
+            </div>
 
-        <!-- Banner -->
-        <div id="banner" class="row text-center">
-            <div class="col">
-                <h4 class="logo-font">Free delivery on orders over €{{ free_delivery_threshold }}!</h4>                
-            </div>            
-        </div>
-            
-            
-            
         </header>
 
     {% if messages %}
@@ -144,10 +137,8 @@
     {% block page-header %}
     {% endblock %}
 
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% block content %}
+    {% endblock %}
 
     <!-- Footer -->
     <footer id="bg-color-footer" class="container-fluid footer">
