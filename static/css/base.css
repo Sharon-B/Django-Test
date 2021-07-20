@@ -68,7 +68,7 @@ body {
     margin: 1.5rem auto; 
     text-align: center;
     margin-bottom: 3rem;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 /*------ Search Bar -------*/
@@ -191,11 +191,15 @@ body {
     height: auto;
 }
 
+.product-card {
+    /* padding-bottom: 2rem; */
+}
+
 /*------ Footer -------*/
 
 .footer {
     min-height: 4rem;
-    margin-top: auto;
+    margin-top: 2rem;
     /* position: fixed;
     bottom: 0;
     left: 0; */

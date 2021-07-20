@@ -22,9 +22,9 @@
                     <div class="row"></div>
                     <div class="row">
                         {% for product in products %}
-                        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                        <div class="col-12 col-md-6 col-lg-4 col-xl-3 g-4">
                             <!-- Bootstrap Card -->
-                            <div class="card h-100">
+                            <div class="card product-card h-100">
                                 {% if product.image %}
                                 <a href="">
                                     <img src="{{ product.image.url }}" alt="{{ product.mname }}" class="card-img-top img-fluid">
