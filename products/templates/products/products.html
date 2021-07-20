@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}- All Products{% endblock %}
+
 {% block page_header %}
     <div class="header-container container">
         <div class="row">
@@ -26,17 +28,17 @@
                             <!-- Bootstrap Card -->
                             <div class="card product-card h-100">
                                 {% if product.image %}
-                                <a href="">
-                                    <img src="{{ product.image.url }}" alt="{{ product.mname }}" class="card-img-top img-fluid">
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid">
                                 </a>
                                 {% else %}
-                                <a href="">
-                                    <img src="{{ MEDIS_URL }}noimage.png" alt="{{ product.mname }}" class="card-img-top img-fluid">
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="card-img-top img-fluid">
                                 </a>
                                 {% endif %}
                                 <div class="card-body">
-                                    <p>{{ product.name }}</p>
-                                    <p>€{{ product.price }}</p>
+                                    <p class="product-info">{{ product.name }}</p>
+                                    <p class="product-info">€{{ product.price }}</p>
                                 </div>
                             </div>
                         </div>

@@ -185,14 +185,24 @@ body {
 }
 
 /*------ Hero Image -------*/
-#hero-image {                     /*------*/
+#hero-image {                     
     object-fit: cover;
     max-width: 100%;
     height: auto;
 }
 
+/*------ Product Cards -------*/
+
 .product-card {
-    /* padding-bottom: 2rem; */
+    border: none;
+}
+
+.product-info {
+    font-size: 1.8rem;
+}
+
+.product-desc {
+    font-size: 1.6rem;
 }
 
 /*------ Footer -------*/
