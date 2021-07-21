@@ -29,12 +29,13 @@ body {
 /*------ Colors -------*/
 
 #bg-body-color,
-.bg-header-color {
+#bg-header-color {
     background-color: #F6F6F6;
 }
 
-#bg-color-footer {
-    background-color: #B2CAD8;
+#bg-color-footer,
+#bg-color-banner {
+    background-color: #0e5ca53b;
 }
 
 /*------ Logo -------*/
@@ -177,9 +178,7 @@ body {
 
 /*------ Banner -------*/
 
-#banner {
-    background-color: #B2CAD8;
-    padding-top: 21rem;
+.banner {
     padding: .5rem;
 }
 
@@ -211,6 +210,10 @@ body {
 }
 
 /*------ Footer -------*/
+
+.footer-buffer {
+    padding: 2rem;
+}
 
 .footer {
     min-height: 4rem;
@@ -288,7 +291,7 @@ body {
         margin-right: 3rem;
     }
 
-    #banner {
+    .banner {
         margin-top: 2rem;           /*------*/
     }
 
@@ -339,7 +342,7 @@ body {
         font-size: 3.6rem;
     }
 
-    body {
+    /* body {
         height: calc(100vh - 18rem);
-    }
+    } */
 }
