@@ -13,12 +13,17 @@ body {
     /* height: 100vh; */
 
     /* height: calc(100vh - 160px); */
-    height: calc(100vh - 164px);
+    /* min-height: calc(100vh - 16rem); */
+
     font-family: "Source Sans Pro", sans-serif;
     color: #2D3636;
 
-    /* display: flex;
-    flex-direction: column; */
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+
 }
 
 /*------ Colors -------*/
@@ -209,7 +214,7 @@ body {
 
 .footer {
     min-height: 4rem;
-    margin-top: 2rem;
+    margin-top: auto;
     /* position: fixed;
     bottom: 0;
     left: 0; */
@@ -334,4 +339,7 @@ body {
         font-size: 3.6rem;
     }
 
+    body {
+        height: calc(100vh - 18rem);
+    }
 }
