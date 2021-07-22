@@ -207,6 +207,7 @@ body {
 
 .product-card {
     border: none;
+    box-shadow: .5rem 1rem 1rem #7f8487;
 }
 
 .product-info {
