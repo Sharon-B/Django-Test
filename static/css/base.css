@@ -243,7 +243,8 @@ body {
 
 .products-count,
 .products-count a,
-.products-count strong {
+.products-count strong,
+#sort-selector {
     font-size: 1.2rem;
 }
 
@@ -254,8 +255,6 @@ body {
 #sort-selector {
     padding: .2rem;
     width: 60%;
-    font-size: 1.2rem;
-    
 }
 
 .sort-select-wrapper {
@@ -446,6 +445,13 @@ body {
 
     #sort-selector {
         width: 40%;
+    }
+
+    .products-count,
+    .products-count a,
+    .products-count strong,
+    #sort-selector {
+        font-size: 1.4rem;
     }
     
 }
