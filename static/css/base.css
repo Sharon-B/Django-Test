@@ -231,6 +231,39 @@ body {
     box-shadow: 0 1.2rem 1.6rem 0 rgba(0,0,0,0.24),0 1.7rem 5rem 0 rgba(0,0,0,0.19);
 }
 
+/*------ Back To Top Button ------*/
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    border: .1rem solid #2d36362e;
+    border-radius: 50%;
+    background-color: #F6F6F6;
+}
+
+.btt-link {
+    text-decoration: none;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+.btt-link .fa-arrow-up {
+    margin: auto;
+    font-size: 1.4rem;
+    color: #2d3636d6;
+}
+
+.btt-button:hover {
+
+}
+
 /*------ Footer -------*/
 
 .footer-buffer {
