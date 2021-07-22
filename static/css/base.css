@@ -184,6 +184,12 @@ body {
     padding: .5rem;
 }
 
+.banner-text, 
+.banner-text strong {
+    font-size: 1.8rem;
+    margin: auto;
+}
+
 /*------ Header Container -------*/
 
 .header-container {
@@ -439,7 +445,7 @@ body {
     } */
 
     #sort-selector {
-        width: 30%;
+        width: 40%;
     }
     
 }
