@@ -219,8 +219,8 @@ body {
 }
 
 .category-badge .rounded-pill {
-    background-color: #0e5ca53b;
-    color: #2D3636;
+    background-color: #0e5ca5de;
+    color: #f6f6f6;
     padding: 1rem 2rem;
     font-size: 1.4rem;
     margin-bottom: 2rem;
@@ -265,7 +265,7 @@ body {
     height: 42px;
     width: 42px;
     position: fixed;
-    bottom: 3rem;
+    bottom: 6rem;
     right: 3rem;
     border: .1rem solid #2d36362e;
     border-radius: 50%;
