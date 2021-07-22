@@ -231,6 +231,34 @@ body {
     box-shadow: 0 1.2rem 1.6rem 0 rgba(0,0,0,0.24),0 1.7rem 5rem 0 rgba(0,0,0,0.19);
 }
 
+.products-count {
+    text-align: center;
+}
+
+.products-count,
+.products-count a,
+.products-count strong {
+    font-size: 1.2rem;
+}
+
+.products-count a {
+    color: #0E5CA5;
+}
+
+#sort-selector {
+    padding: .2rem;
+    width: 60%;
+    font-size: 1.2rem;
+    
+}
+
+.sort-select-wrapper {
+    text-align: center;
+}
+
+
+
+
 /*------ Back To Top Button ------*/
 
 .btt-button {
@@ -261,8 +289,9 @@ body {
 }
 
 .btt-button:hover {
-
+    background-color: hsla(180, 9%, 19%, .3);
 }
+
 
 /*------ Footer -------*/
 
@@ -350,6 +379,14 @@ body {
         margin-top: 2rem;           /*------*/
     }
 
+    .products-count {
+        text-align: left;
+    }
+
+    .sort-select-wrapper {
+        text-align: right;
+    }
+
     /* .header-container {
         padding-top: 16rem;
     } */
@@ -400,4 +437,9 @@ body {
     /* body {
         height: calc(100vh - 18rem);
     } */
+
+    #sort-selector {
+        width: 30%;
+    }
+    
 }
