@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}- All Products{% endblock %}
+{% block extra_title %}- Products{% endblock %}
 
 {% block page_header %}
     <div class="header-container container">
@@ -15,8 +15,14 @@
 {% block content %}
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col page-heading">
                     <h1 class="heading">Products</h1>
+                    <!-- Category Badges using bootstrap badge -->
+                    {% for c in current_categories %}
+                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
+                        <span class="badge rounded-pill">{{ c.display_name }}</span>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="row">

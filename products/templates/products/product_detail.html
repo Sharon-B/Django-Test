@@ -15,7 +15,7 @@
 {% block content %}
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col page-heading">
                     <!-- Page Heading -->
                     <h1 class="heading">{{ product.name }}</h1>
                 </div>
@@ -37,6 +37,14 @@
                 <div class="col-12 col-md-6">
                     <div class="product-details-container">
                         <p class="product-info">{{ product.name }}</p>
+                         <!-- Category -->
+                        {% if product.category %}
+                            <p class="small mt-0">
+                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                    {{ product.category.display_name }}
+                                </a>
+                            </p>
+                        {% endif %}
                         <p class="product-info">€{{ product.price }}</p>
                         <p class="product-desc">{{ product.description }}</p>
                     </div>
