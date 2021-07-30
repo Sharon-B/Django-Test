@@ -84,6 +84,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.text-bold {
+    font-weight: 600;
+}
+
 /*------ Search Bar -------*/
 
 .search {
@@ -324,10 +328,14 @@ body {
     margin: 2rem 0;
 }
 
+.quantity .input-group {
+    width: 30%;
+}
+
 /*------ Form -------*/
 
 .input-group {
-    width: 50%;
+    width: 100%;
     margin-bottom: 2rem;
 }
 
@@ -370,11 +378,7 @@ body {
     opacity: .5;
 }
 
-
-
 /*----------------- Media Queries ----------------*/
-
-
 /*-- Medium Screen--*/
 @media only screen and (min-width: 768px) {
 
