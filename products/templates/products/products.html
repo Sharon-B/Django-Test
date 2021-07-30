@@ -31,7 +31,7 @@
                         <div class="col-12 col-md-6">
                             <p class="text-muted products-count">
                                 {% if search_term or current_categories or current_sorting != 'None_None' %}
-                                    <span><a href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals">All Products</a> | </span>
+                                    <span><a href="{% url 'products' %}?category=dining_sets,bistro_sets,lounge_sets,chairs,sofas,benches,new_arrivals">All Products</a> | </span>
                                 {% endif %}
                                 {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                             </p>
