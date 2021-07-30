@@ -321,7 +321,7 @@ body {
 }
 
 .quantity {
-    margin: 5rem 0;
+    margin: 2rem 0;
 }
 
 /*------ Form -------*/
@@ -425,6 +425,8 @@ body {
         text-align: right;
     }
 
+    
+
     /* .header-container {
         padding-top: 16rem;
     } */
@@ -485,6 +487,10 @@ body {
     .products-count strong,
     #sort-selector {
         font-size: 1.4rem;
+    }
+
+    .quantity {
+        margin: 5rem 0;
     }
     
 }
