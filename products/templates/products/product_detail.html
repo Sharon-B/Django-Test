@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="product-details-container">
-                        <p class="product-info">{{ product.name }}</p>
+                        <!-- <p class="product-info">{{ product.name }}</p> -->
                         <!-- Category -->
                         {% if product.category %}
                             <p class="small mt-0">
@@ -52,7 +52,7 @@
                         {% csrf_token %}
                         <div class="form-row">
                             <!-- Quantity select -->
-                            <div class="col-12">
+                            <div class="col-12 quantity">
                                 <p class="p-text text-bold">Quantity:</p>
                                 <div class="form-group w-50">
                                     <div class="input-group">
