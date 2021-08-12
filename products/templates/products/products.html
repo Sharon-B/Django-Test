@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %}- Products{% endblock %}
+{% block extra_title %}- All Products{% endblock %}
 
 {% block page_header %}
     <div class="header-container container">
@@ -15,23 +15,29 @@
 {% block content %}
         <div class="container">
             <div class="row">
-                <div class="col page-heading">
-                    <h1 class="heading">Products</h1>
-                    <!-- Category Badges using bootstrap badge -->
-                    {% for c in current_categories %}
-                    <a class="category-badge" href="{% url 'products' %}?category={{ c.name }}">
-                        <span class="badge rounded-pill">{{ c.display_name }}</span>
-                    </a>
-                    {% endfor %}
+                <div class="col">
+                    <!-- Page Heading -->
+                    <div class="col page-heading">
+                        <h1 class="heading">Products</h1>
+                    
+                        <!-- Category Badges using bootstrap badge -->
+                        {% for c in current_categories %}
+                        <a class="category-badge" href="{% url 'products' %}?category={{ c.name }}">
+                            <span class="badge rounded-pill">{{ c.display_name }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col product-container col-10 offset-1">
                     <div class="row">
+                        <!-- Link to all products and product count -->
                         <div class="col-12 col-md-6">
                             <p class="text-muted products-count">
                                 {% if search_term or current_categories or current_sorting != 'None_None' %}
-                                    <span><a href="{% url 'products' %}?category=dining_sets,bistro_sets,lounge_sets,chairs,sofas,benches,new_arrivals">All Products</a> | </span>
+                                    <span><a href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals">All Products</a> | </span>
                                 {% endif %}
                                 {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                             </p>
@@ -51,8 +57,8 @@
                                 </select>
                             </div>
                         </div>
-                       
                     </div>
+                    <!-- Product Cards -->
                     <div class="row">
                         {% for product in products %}
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 g-4">
@@ -78,23 +84,11 @@
                 </div>
             </div>
         </div>
-        <!-- Back to top button -->
-        <div class="btt-button">
-            <a class="btt-link d-flex h-100">
-                <i class="fas fa-arrow-up"></i>
-            </a>	
-        </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    <!-- Javascript for back to top button -->
-    <script>
-		$('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-		})
-	</script>
-
+    
     <!-- Javascript for selector box -->
     <script>
         $('#sort-selector').change(function() {

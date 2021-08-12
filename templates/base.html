@@ -7,10 +7,6 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-            <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-            <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-            <!-- <link rel="manifest" href="site.webmanifest"> -->
         {% endblock %}
 
         {% block extra_meta %}
@@ -22,7 +18,11 @@
             <!-- Google Fonts with pre connect -->
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,700&family=Source+Sans+Pro:wght@400;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+            <!-- Favicon -->
+            <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
             <!-- Static base.css -->
             <link rel="stylesheet" href="{% static 'css/base.css' %}">
         {% endblock %}
@@ -37,19 +37,23 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
             <!-- JQuery -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <!-- Stripe -->
+            <script src="https://js.stripe.com/v3/"></script>
         {% endblock %}
 
         {% block extra_js %}
         {% endblock %}
 
-        <title>Django Test {% block extra_title %}{% endblock %}</title>
+        <title>Inside Out {% block extra_title %}{% endblock %}</title>
     </head>
+
     <body id="bg-body-color">
         <header id="bg-header-color" class="container-fluid fixed-top">
+
             <!-- Logo -->
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <div id="logo">
+                <div class="col col-md-4">
+                    <div id="logo" >
                         <a href="{% url 'home' %}">
                             <h2 id="logo-top">Inside Out</h2>
                             <h3 id="logo-bottom">Outdoor Furniture</h3>
@@ -81,12 +85,12 @@
                                 <i class="far fa-user icons"></i>
                             </span>
                             <!-- Account Dropdown links-->
-                            <div class="dropdown-menu dd-menu" aria-labelledby="#account">
+                            <div class="dropdown-menu dd-menu" aria-labelledby="account">
                                 {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
                                         <a class="dropdown-item dd-item" href="#">Admin</a>
                                     {% endif %}
-                                    <a class="dropdown-item dd-item" href="#">Profile</a>
+                                    <a class="dropdown-item dd-item" href="{% url 'profile' %}">Profile</a>
                                     <a class="dropdown-item dd-item" href="{% url 'account_logout' %}">Logout</a>
                                 {% else %}
                                 <a class="dropdown-item dd-item" href="{% url 'account_signup' %}">Register</a>
@@ -97,9 +101,9 @@
 
                         <!-- Shopping Cart -->
                         <li class="shopping-cart">
-                            <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_cart' %}">
+                            <a class="{% if grand_total %}text-blue font-weight-bold{% else %}text-color{% endif %} nav-link" href="{% url 'view_cart' %}">
                                 <div>
-                                    <div class="cart"><i class="fas fa-shopping-cart icons"></i></div>
+                                    <div class="cart text-center"><i class="fas fa-shopping-cart"></i></div>
                                     <p class="grand-total">
                                         {% if grand_total %}
                                             €{{ grand_total|floatformat:2 }}
@@ -110,18 +114,18 @@
                                 </div>
                             </a>
                         </li>
+
                     </ul>
                 </div>
             </div>
+             <!-- Navigation -->
             <div class="row navigation">
                 <!-- Bootstrap Navbar with modifications-->
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <!-- <div class="col-3"> -->
-                        <!-- Navbar Collapse Button -->
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>  
-                    <!-- </div> -->
+                    <!-- Navbar Collapse Button -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav-toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
                     {% include 'includes/mobile-header.html' %}
                     {% include 'includes/main-nav.html' %}
                 </nav>
@@ -130,14 +134,29 @@
             <!-- Banner -->
             <div id="bg-color-banner" class="row text-center banner">
                 <div class="col">
-                    <p class="banner-text"><strong>FREE</strong> delivery on orders over €{{ free_delivery_threshold }}!</p>                
-                </div>            
+                    <p class="banner-text"><strong>FREE</strong> delivery on orders over €{{ free_delivery_threshold }}!
+                    </p>
+                </div>
             </div>
 
         </header>
 
         {% if messages %}
-            <div class="message-container"></div>
+            <div class="message-container container">
+                {% for message in messages %}
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/toast_error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/toast_warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/toast_success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/toast_info.html' %}
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </div>
         {% endif %}
 
         {% block page_header %}
@@ -146,15 +165,15 @@
         {% block content %}
         {% endblock %}
 
-        
-        <!-- Footer -->
+        <!-- Footer Buffer -->
         <div class="footer-buffer container">
             <div class="row">
                 <div class="col">
                 </div>
             </div>
         </div>
-        <footer id="bg-color-footer" class="container-fluid footer">
+        <!-- Footer -->
+        <footer id="bg-color-footer" class="footer container-fluid">
             <div class="row">
                 <div class="col-12">
                     <!-- Social Links -->
@@ -182,8 +201,14 @@
             </div>
         </footer>
 
-    {% block postloadjs %}
-    {% endblock %}
+        {% block postloadjs %}
+            <script>
+                var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+                var toastList = toastElList.map(function (toastEl) {
+                    return new bootstrap.Toast(toastEl).show();
+                });
+            </script>
+        {% endblock %}
 
     </body>
 </html>

@@ -48,6 +48,12 @@ INSTALLED_APPS = [
     'home',
     'products',
     'cart',
+    'checkout',
+    'user_profiles',
+
+    # Other
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +68,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'inside_out.urls'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -73,16 +82,25 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',       # Required to access the HTTP request object
+                'django.template.context_processors.request',    # Required to access the HTTP request object
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'cart.contexts.cart_contents',  # Allows us to access the cart contents across all apps.
+                'django.template.context_processors.media',
+                'cart.contexts.cart_contents',
             ],
+            'builtins': [        
+                # Access crispy forms across all templates
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
 
-# From django docs:
+# Store messages in the session
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# From django-allauth docs:
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -92,8 +110,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
-WSGI_APPLICATION = 'inside_out.wsgi.application'
 
 # Temporarily log the confirmation emails to the console:
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -105,6 +121,8 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 6
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+WSGI_APPLICATION = 'inside_out.wsgi.application'
 
 
 # Database
@@ -168,3 +186,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Delivery Settings
 FREE_DELIVERY_THRESHOLD = 150
 STANDARD_DELIVERY_PERCENTAGE = 15
+
+# Stripe variables:
+STRIPE_CURRENCY = 'eur'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+
+# From Email setting
+DEFAULT_FROM_EMAIL = 'insideout@example.com'

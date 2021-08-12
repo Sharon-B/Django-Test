@@ -7,8 +7,9 @@ from .models import Product, Category
 
 # Create your views here.
 def all_products(request):
-    """ A view to show all products, inclluding sorting and search queries """
-
+    """
+    A view to show all products, search, filter and sort products.
+    """
     products = Product.objects.all()
 
     search_query = None
@@ -55,8 +56,8 @@ def all_products(request):
         'products': products,
         'search_term': search_query,
         'current_categories': categories,
-        'current_sorting': current_sorting
-    }
+        'current_sorting': current_sorting,
+      }
 
     return render(request, 'products/products.html', context)
 

@@ -73,10 +73,10 @@
                                                     </div>
                                                 </div>
                                             </form>
-                                            <!-- <div class="update-remove"> -->
-                                            <a class="update-link text-info"><small>Update</small></a>
-                                            <a class="remove-item text-danger float-end" id="remove_{{ item.item_id }}"><small>Remove</small></a>
-                                            <!-- </div> -->
+                                            <div class="update-remove">
+                                                <a class="update-link text-info"><small>Update</small></a>
+                                                <a class="remove-item text-danger float-end" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                            </div>
                                         </td>
                                         <td>
                                             <p class="p-text">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -102,17 +102,18 @@
                                             <span class="p-text">Continue Shopping</span>
                                         </a>
                                         <!-- Checkout button -->
-                                        <a href="" class="button btn">
+                                        <a href="{% url 'checkout' %}" class="button btn">
                                             <span class="p-text">Checkout</span>
                                         </a>
                                     </td>
                                 </tr>
                             </tbody>
+
                         </table>
                     </div>
                 {% else %}
                     <p class="p-text">There are no items in your shopping cart.</p>
-                    <a class="btn button" href="{% url 'products' %}?category=dining_sets,bistro_sets,lounge_sets,chairs,sofas,benches,new_arrivals">Continue Shopping</a>
+                    <a class="btn button" href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals">Continue Shopping</a>
                 {% endif %}
             </div>
         </div>
@@ -127,7 +128,7 @@
     <script>
         // Update quantity on click
         $('.update-link').click(function(e) {
-            var form = $(this).prev('.update-form');
+            var form = $(this).parent().prev('.update-form');
             form.submit();
         })
 
