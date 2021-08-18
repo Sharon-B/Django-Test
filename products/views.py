@@ -65,7 +65,9 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product """
+    """
+    A view to show individual product
+    """
     product = get_object_or_404(Product, pk=product_id)
 
     context = {
@@ -90,7 +92,8 @@ def add_product(request):
                 messages.success(request, 'Product added successfully!')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
-                messages.error(request, 'Please check the form for errors. Product failed to add.')
+                messages.error(request, 'Please check the form for errors. \
+                    Product failed to add.')
         else:
             form = ProductForm()
 
@@ -124,7 +127,8 @@ def edit_product(request, product_id):
                 messages.success(request, 'Product updated successfully!')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
-                messages.error(request, 'Please check the form for errors. Product failed to update.')
+                messages.error(request, 'Please check the form for errors. \
+                    Product failed to update.')
         else:
             form = ProductForm(instance=product)
             messages.info(request, f'Editing {product.name}')
