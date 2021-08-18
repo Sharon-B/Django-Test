@@ -25,8 +25,8 @@ body {
     background-color: #F6F6F6;
 }
 
-#bg-color-footer,
-#bg-color-banner {
+#bg-color-banner,
+#bg-color-footer {
     background-color: #B2CAD8;
 }
 
@@ -74,6 +74,12 @@ body {
 .search-button {
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    border-top-left-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+.fa-search {
+    font-size: 1.4rem;
 }
 
 .search-dd-menu {
@@ -119,6 +125,10 @@ body {
     color: #2D3636;
 }
 
+.fa-angle-down {
+    font-size: 1.4rem;
+}
+
 /*------ Icons -------*/
 
 .icons {
@@ -160,6 +170,8 @@ body {
 
 .banner {
     padding: .5rem;
+    border-top: .1rem solid #0E5CA5;
+    border-bottom: .1rem solid #0E5CA5;
 }
 
 .banner-text, 
@@ -191,15 +203,16 @@ body {
 .heading {                          
     /* font-family: "Source Serif Pro", serif;    REMOVE GOOGLE FONT */
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 3rem;
     margin: 0 auto; 
     margin-bottom: 3rem;
     margin-top: 4rem;
+    color: #0E5CA5;
 }
 
 .sub-heading {
-    font-size: 2.2rem;
-    margin: 1rem;
+    font-size: 2.6rem;
+    margin: 2rem 1rem;
 }
 
 .p-text {
@@ -432,6 +445,7 @@ body {
 .footer {
     min-height: 3rem;
     margin-top: auto;
+    border-top: .1rem solid #0E5CA5;
 }
 
 #social-icon-links {
@@ -535,7 +549,7 @@ body {
     }
 
     .heading {
-        font-size: 3.2rem;
+        font-size: 3.6rem;
     }
 
     .products-count {
@@ -579,6 +593,18 @@ body {
 
     .search-input {
         width: 30rem;
+    }
+
+    .fa-angle-down {
+        font-size: 1.8rem;
+    }
+
+    .dropdown-item {
+        font-size: 2.2rem;
+    }
+
+    .heading {
+        font-size: 4rem;
     }
 
     #sort-selector {
