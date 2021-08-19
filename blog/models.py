@@ -22,7 +22,7 @@ class BlogPost(models.Model):
 
 
 # Blog Comments model
-class BlogComments(models.Model):
+class BlogComment(models.Model):
 
     class Meta:
         ordering = ['-created_on']
@@ -30,8 +30,8 @@ class BlogComments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE,
                                   related_name='comments')
-    created_on = models.DateTimeField(auto_now_add=True, blank=True)
     comment = models.TextField(default=None, blank=False, null=False)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return f"Comment on {self.blog_post.title} by {self.user}"

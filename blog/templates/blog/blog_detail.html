@@ -41,9 +41,23 @@
                 <div class="col-12 col-md-8 offset-md-2">
                     <div class="blog-details-container">
                         <p class="blog-info p-text">{{ post.body_text }}</p>
-                        <p class="blog-info text-muted">{{ post.user }} | {{ post.created_on}}</p>
+                        <p class="blog-info text-muted text-end">{{ post.user }} | {{ post.created_on}}</p>
                     </div>
                 </div>
             </div>
+            <!-- Comments -->
+            <div class="container comments-container">
+                <div class="row">
+                    <div class="col">
+                        <p class="sub-heading">Comments</p>
+                        <p class="p-text">{{ comments.count }}</p>
+                        {% for comment in comments %}
+                            <p class="text-muted text-end">{{ comment.created_on }}</p>
+                            <p class="p-text">{{ comment.comment | linebreaks }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
         </div>
 {% endblock %}
