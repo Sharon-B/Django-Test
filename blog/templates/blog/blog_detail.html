@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+{% endblock %}
+
 {% block extra_title %}- {{ post.title }}{% endblock %}
 
 {% block page_header %}
@@ -40,24 +44,32 @@
                 
                 <div class="col-12 col-md-8 offset-md-2">
                     <div class="blog-details-container">
-                        <p class="blog-info p-text">{{ post.body_text }}</p>
+                        <p class="blog-info p-text mt-3">{{ post.body_text }}</p>
                         <p class="blog-info text-muted text-end">{{ post.user }} | {{ post.created_on}}</p>
                     </div>
                 </div>
             </div>
             <!-- Comments -->
-            <div class="container comments-container">
-                <div class="row">
-                    <div class="col">
-                        <p class="sub-heading">Comments</p>
-                        <p class="p-text">{{ comments.count }}</p>
-                        {% for comment in comments %}
-                            <p class="text-muted text-end">{{ comment.created_on }}</p>
-                            <p class="p-text">{{ comment.comment | linebreaks }}</p>
-                        {% endfor %}
-                    </div>
+            <div class="row comments-container">
+                <div class="col-12 col-md-4 offset-md-4 mt-3 mb-3">
+                    <span class="sub-heading">Comments</span>
+                    <span class="p-text text-end ms-auto">{{ comments.count }}</span>
                 </div>
+                {% for comment in comments %}   
+                    <div class="row">
+                        <div class="col-12 col-md-6 offset-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <p class="p-text text-bold">{{ comment.user }}'s Comment</p>
+                                    <p class="text-muted text-end">{{ comment.created_on }}</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="p-text">{{ comment.comment }}</p>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-
         </div>
 {% endblock %}
