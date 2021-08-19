@@ -19,7 +19,8 @@
                     <!-- Page Heading -->
                     <div class="col page-heading">
                         <h1 class="heading">Inspiration</h1>
-                        <p class="p-text">Welcome to our blog, where you can find inspiration for creating and maintaining your outside room</p>
+                        <p class="p-text">Welcome to our inspiration blog, where you can find creative ideas for creating and maintaining your outside room.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -31,20 +32,20 @@
                         {% for post in blog_posts %}
                         <div class="col-12 col-md-6 col-lg-4 col-xl-3 g-4">
                             <!-- Bootstrap Card -->
-                            <div class="card product-card h-100">
+                            <div class="card blog-card h-100">
                                 {% if post.image %}
-                                <a href="#">
-                                    <img src="{{ post.image.url }}" alt="{{ post.name }}" class="card-img-top img-fluid">
+                                <a href="{% url 'blog_detail' post.id %}">
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top img-fluid">
                                 </a>
                                 {% else %}
-                                <a href="#">
-                                    <img src="{{ MEDIA_URL }}noimage.png" alt="" class="card-img-top img-fluid">
+                                <a href="{% url 'blog_detail' post.id %}">
+                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ post.title }}" class="card-img-top img-fluid">
                                 </a>
                                 {% endif %}
                                 <div class="card-body">
-                                    <p class="blog-info">{{ post.title }}</p>
-                                    <p class="blog-info">{{ post.body_text|slice:":200" }}</p>
-                                    <p class="blog-info">{{ post.user }} | {{ post.created_on}}</p>
+                                    <p class="blog-info sub-heading">{{ post.title }}</p>
+                                    <p class="blog-info p-text">{{ post.body_text|slice:":200" }}</p>
+                                    <p class="blog-info text-muted">{{ post.user }} | {{ post.created_on}}</p>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- {{ post.title }}{% endblock %}
+
+{% block page_header %}
+    <div class="header-container container">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <!-- Page Heading -->
+                    <div class="col page-heading">
+                        <h1 class="heading">{{ post.title }}</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2">
+                    <div class="blog-image-container">
+                        {% if product.image %}
+                            <a href="{{ post.image.url }}" target="_blank">
+                                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top img-fluid">
+                            </a>
+                        {% else %}
+                            <a href="{{ MEDIA_URL }}noimage.png" target="_blank">
+                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ post.title }}" class="card-img-top img-fluid">
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="col-12 col-md-8 offset-md-2">
+                    <div class="blog-details-container">
+                        <p class="blog-info text-bold">{{ post.body_text }}</p>
+                        <p class="blog-info text-muted">{{ post.user }} | {{ post.created_on}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

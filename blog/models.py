@@ -21,13 +21,13 @@ class BlogPost(models.Model):
         return self.title
 
 
-# # Blog Comments model
-# class Comments(models.Model):
+# Blog Comments model
+class Comments(models.Model):
 
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
-#     created_on = models.DateTimeField(auto_now_add=True, blank=True)
-#     comment = models.TextField(default=None, blank=False, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add=True, blank=True)
+    comment = models.TextField(default=None, blank=False, null=False)
 
-#     def __str__(self):
-#         return f"Comment on {self.blog_post.title} by {self.user}"
+    def __str__(self):
+        return f"Comment on {self.blog_post.title} by {self.user}"
