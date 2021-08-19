@@ -22,7 +22,7 @@ class BlogPost(models.Model):
 
 
 # Blog Comments model
-class Comments(models.Model):
+class BlogComments(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     blog_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
