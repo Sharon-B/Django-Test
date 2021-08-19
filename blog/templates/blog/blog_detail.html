@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
 {% endblock %}
 
-{% block extra_title %}- {{ post.title }}{% endblock %}
+{% block extra_title %}- {{ blog_post.title }}{% endblock %}
 
 {% block page_header %}
     <div class="header-container container">
@@ -70,20 +70,24 @@
                         </div>
                     </div>
                 {% endfor %}
-                {% if request.user.is_anonymous %}
-                <p class="p-text">Please
-                    <a class="text-blue" href="{% url 'account_login' %}"> Login </a> or
-                    <a class="text-blue" href="{% url 'account_signup' %}">Signup</a>
-                    To add a comment.</p>
-                {% else %}
                 <div class="comment-form-container">
-                    <form id="comment-form" method="POST" action="{% url 'blog_detail' blog_post.id %}">
-                        {% csrf_token %}
-                        {{ comment_form|crispy }}
-                        <button class="button btn" type="submit">Add comment</button>
-                    </form>
+                    <div class="row">
+                        <div class="col-12 col-md-6 offset-md-3">
+                            {% if request.user.is_anonymous %}
+                                <p class="p-text">Please
+                                    <a class="text-blue p-text" href="{% url 'account_login' %}"> Login </a> or
+                                    <a class="text-blue p-text" href="{% url 'account_signup' %}">Signup</a>
+                                    to add a comment.</p>
+                            {% else %}
+                                <form id="comment-form" method="POST" action="{% url 'blog_detail' blog_post.id %}">
+                                    {% csrf_token %}
+                                    {{ comment_form|crispy }}
+                                    <button class="button btn" type="submit">Add comment</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-                {% endif %}
             </div>
-        </div>
+        </div> 
 {% endblock %}
