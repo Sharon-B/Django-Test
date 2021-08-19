@@ -22,7 +22,7 @@
                 <div class="col">
                     <!-- Page Heading -->
                     <div class="col page-heading">
-                        <h1 class="heading">{{ post.title }}</h1>
+                        <h1 class="heading">{{ blog_post.title }}</h1>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2">
                     <div class="blog-image-container">
-                        {% if post.image %}
+                        {% if blog_post.image %}
                             <a href="{{ post.image.url }}" target="_blank">
                                 <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top img-fluid">
                             </a>
@@ -44,8 +44,8 @@
                 
                 <div class="col-12 col-md-8 offset-md-2">
                     <div class="blog-details-container">
-                        <p class="blog-info p-text mt-3">{{ post.body_text }}</p>
-                        <p class="blog-info text-muted text-end">{{ post.user }} | {{ post.created_on}}</p>
+                        <p class="blog-info p-text mt-3">{{ blog_post.body_text }}</p>
+                        <p class="blog-info text-muted text-end">{{ blog_post.user }} | {{ blog_post.created_on}}</p>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 {% for comment in comments %}   
                     <div class="row">
                         <div class="col-12 col-md-6 offset-md-3">
-                            <div class="card">
+                            <div class="card mb-3">
                                 <div class="card-header">
                                     <p class="p-text text-bold">{{ comment.user }}'s Comment</p>
                                     <p class="text-muted text-end">{{ comment.created_on }}</p>
@@ -70,6 +70,20 @@
                         </div>
                     </div>
                 {% endfor %}
+                {% if request.user.is_anonymous %}
+                <p class="p-text">Please
+                    <a class="text-blue" href="{% url 'account_login' %}"> Login </a> or
+                    <a class="text-blue" href="{% url 'account_signup' %}">Signup</a>
+                    To add a comment.</p>
+                {% else %}
+                <div class="comment-form-container">
+                    <form id="comment-form" method="POST" action="{% url 'blog_detail' blog_post.id %}">
+                        {% csrf_token %}
+                        {{ comment_form|crispy }}
+                        <button class="button btn" type="submit">Add comment</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
 {% endblock %}
