@@ -17,77 +17,77 @@
 {% endblock %}
 
 {% block content %}
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <!-- Page Heading -->
-                    <div class="col page-heading">
-                        <h1 class="heading">{{ blog_post.title }}</h1>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!-- Page Heading -->
+                <div class="col page-heading">
+                    <h1 class="heading">{{ blog_post.title }}</h1>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-12 col-md-8 offset-md-2">
-                    <div class="blog-image-container">
-                        {% if blog_post.image %}
-                            <a href="{{ post.image.url }}" target="_blank">
-                                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top img-fluid">
-                            </a>
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="blog-image-container">
+                    {% if blog_post.image %}
+                        <a href="{{ post.image.url }}" target="_blank">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="card-img-top img-fluid">
+                        </a>
+                    {% else %}
+                        <a href="{{ MEDIA_URL }}noimage.png" target="_blank">
+                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ post.title }}" class="card-img-top img-fluid">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-8 offset-md-2">
+                <div class="blog-details-container">
+                    <p class="blog-info p-text mt-3">{{ blog_post.body_text }}</p>
+                    <p class="blog-info text-muted text-end">{{ blog_post.user }} | {{ blog_post.created_on}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Comments -->
+        <div class="row comments-container">
+            <div class="col-12 col-md-4 offset-md-4 mt-3 mb-3">
+                <span class="sub-heading">Comments</span>
+                <span class="p-text text-end ms-auto">{{ comments.count }}</span>
+            </div>
+            {% for comment in comments %}   
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <p class="p-text text-bold">{{ comment.user }}'s Comment</p>
+                                <p class="text-muted text-end">{{ comment.created_on }}</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="p-text">{{ comment.comment }}</p>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="comment-form-container">
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        {% if request.user.is_anonymous %}
+                            <p class="p-text">Please
+                                <a class="text-blue p-text" href="{% url 'account_login' %}"> Login </a> or
+                                <a class="text-blue p-text" href="{% url 'account_signup' %}">Signup</a>
+                                to add a comment.</p>
                         {% else %}
-                            <a href="{{ MEDIA_URL }}noimage.png" target="_blank">
-                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ post.title }}" class="card-img-top img-fluid">
-                            </a>
+                            <form id="comment-form" method="POST" action="{% url 'blog_detail' blog_post.id %}">
+                                {% csrf_token %}
+                                {{ comment_form|crispy }}
+                                <button class="button btn" type="submit">Add comment</button>
+                            </form>
                         {% endif %}
                     </div>
                 </div>
-                
-                <div class="col-12 col-md-8 offset-md-2">
-                    <div class="blog-details-container">
-                        <p class="blog-info p-text mt-3">{{ blog_post.body_text }}</p>
-                        <p class="blog-info text-muted text-end">{{ blog_post.user }} | {{ blog_post.created_on}}</p>
-                    </div>
-                </div>
             </div>
-            <!-- Comments -->
-            <div class="row comments-container">
-                <div class="col-12 col-md-4 offset-md-4 mt-3 mb-3">
-                    <span class="sub-heading">Comments</span>
-                    <span class="p-text text-end ms-auto">{{ comments.count }}</span>
-                </div>
-                {% for comment in comments %}   
-                    <div class="row">
-                        <div class="col-12 col-md-6 offset-md-3">
-                            <div class="card mb-3">
-                                <div class="card-header">
-                                    <p class="p-text text-bold">{{ comment.user }}'s Comment</p>
-                                    <p class="text-muted text-end">{{ comment.created_on }}</p>
-                                </div>
-                                <div class="card-body">
-                                    <p class="p-text">{{ comment.comment }}</p>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-                <div class="comment-form-container">
-                    <div class="row">
-                        <div class="col-12 col-md-6 offset-md-3">
-                            {% if request.user.is_anonymous %}
-                                <p class="p-text">Please
-                                    <a class="text-blue p-text" href="{% url 'account_login' %}"> Login </a> or
-                                    <a class="text-blue p-text" href="{% url 'account_signup' %}">Signup</a>
-                                    to add a comment.</p>
-                            {% else %}
-                                <form id="comment-form" method="POST" action="{% url 'blog_detail' blog_post.id %}">
-                                    {% csrf_token %}
-                                    {{ comment_form|crispy }}
-                                    <button class="button btn" type="submit">Add comment</button>
-                                </form>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> 
+        </div>
+    </div> 
 {% endblock %}
