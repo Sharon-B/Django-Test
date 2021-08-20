@@ -9,4 +9,7 @@ urlpatterns = [
     path('delete/<int:post_id>/',
          views.delete_blog_post,
          name='delete_blog_post'),
+    # path('delete/<int:comment_id>/',
+    #      views.delete_comment,
+    #      name='delete_comment'),
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import BlogPost
+from .models import BlogPost, BlogComment
 from .forms import BlogCommentForm, BlogForm
 
 
@@ -146,3 +146,22 @@ def delete_blog_post(request, post_id):
         return redirect(reverse('home'))
 
     return redirect(reverse('blog'))
+
+
+# Delete Comment
+# @login_required
+# def delete_comment(request, comment_id, post_id):
+#     """
+#     Allow an admin user to delete a comment
+#     """
+#     blog_post = get_object_or_404(BlogPost, pk=post_id)
+
+#     if request.user.is_superuser:
+#         comment = get_object_or_404(BlogComment, pk=comment_id)
+#         comment.delete()
+#         messages.success(request, 'Comment deleted!')
+#     else:
+#         messages.error(request, 'Sorry, you do not have permission for that.')
+#         return redirect(reverse('home'))
+
+#     return redirect(reverse('blog_detail', args=[blog_post.id]))
