@@ -93,3 +93,56 @@ def add_blog_post(request):
     }
 
     return render(request, template, context)
+
+
+# Edit Blog
+@login_required
+def edit_blog(request, post_id):
+    """
+    Allow an admin user to edit a product to the store
+    """
+    if request.user.is_superuser:
+
+        post = get_object_or_404(BlogPost, pk=post_id)
+
+        if request.method == 'POST':
+            form = BlogForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Blog post updated successfully!')
+                return redirect(reverse('blog_detail', args=[post.id]))
+            else:
+                messages.error(request, 'Please check the form for errors. \
+                    Blog post failed to update.')
+        else:
+            form = BlogForm(instance=post)
+            messages.info(request, f'Editing {post.title}')
+    else:
+        messages.error(request, 'Sorry, you do not have permission for that.')
+        return redirect(reverse('home'))
+
+    template = 'blog/edit_blog.html'
+
+    context = {
+        'form': form,
+        'post': post,
+    }
+
+    return render(request, template, context)
+
+
+# Delete Blog Post
+@login_required
+def delete_blog_post(request, post_id):
+    """
+    Allow an admin user to delete a blog post
+    """
+    if request.user.is_superuser:
+        blog_post = get_object_or_404(BlogPost, pk=post_id)
+        blog_post.delete()
+        messages.success(request, 'Blog post deleted!')
+    else:
+        messages.error(request, 'Sorry, you do not have permission for that.')
+        return redirect(reverse('home'))
+
+    return redirect(reverse('blog'))
