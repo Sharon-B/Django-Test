@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
-from .models import BlogPost, BlogComment
+from .models import BlogPost
 from .forms import BlogCommentForm
 
 
