@@ -5,7 +5,6 @@ from .models import BlogPost, BlogComment
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = (
                     'title',
-                    'slug',
                     'created_on',
                     'image',
     )
@@ -14,8 +13,6 @@ class BlogPostAdmin(admin.ModelAdmin):
                      'title',
                      'body_text',
     )
-
-    prepopulated_fields = {'slug': ('title',)}
 
 
 class BlogCommentAdmin(admin.ModelAdmin):

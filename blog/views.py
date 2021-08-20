@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import BlogPost
-from .forms import BlogCommentForm
+from .forms import BlogCommentForm, BlogForm
 
 
 # All blog posts view
@@ -53,6 +54,42 @@ def blog_detail(request, post_id):
         'comment_form': comment_form,
         'comments': comments,
         'new_comment': new_comment,
+    }
+
+    return render(request, template, context)
+
+
+# Blog Admin:
+# Add blog
+@login_required
+def add_blog_post(request):
+    """
+    Allow an admin user to add a blog post
+    """
+    if request.user.is_superuser:
+
+        if request.method == 'POST':
+            form = BlogForm(request.POST, request.FILES)
+            if form.is_valid():
+                blog_post = form.save(commit=False)
+                blog_post.user = request.user
+                blog_post.save()
+                messages.success(request, 'Blog added successfully!')
+                return redirect(reverse('blog_detail', args=[blog_post.id]))
+            else:
+                messages.error(request, 'Please check the form for errors. \
+                    Blog failed to add.')
+        else:
+            form = BlogForm()
+
+    else:
+        messages.error(request, 'Sorry, you do not have permission for that.')
+        return redirect(reverse('home'))
+
+    template = 'blog/add_blog.html'
+
+    context = {
+        'form': form,
     }
 
     return render(request, template, context)
