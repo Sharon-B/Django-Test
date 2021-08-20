@@ -149,19 +149,17 @@ def delete_blog_post(request, post_id):
 
 
 # Delete Comment
-# @login_required
-# def delete_comment(request, comment_id, post_id):
-#     """
-#     Allow an admin user to delete a comment
-#     """
-#     blog_post = get_object_or_404(BlogPost, pk=post_id)
+@login_required
+def delete_comment(request, comment_id):
+    """
+    Allow an admin user to delete a comment
+    """
+    if request.user.is_superuser:
+        comment = BlogComment.objects.get(pk=comment_id)
+        comment.delete()
+        messages.success(request, 'Comment deleted!')
+    else:
+        messages.error(request, 'Sorry, you do not have permission for that.')
+        return redirect(reverse('home'))
 
-#     if request.user.is_superuser:
-#         comment = get_object_or_404(BlogComment, pk=comment_id)
-#         comment.delete()
-#         messages.success(request, 'Comment deleted!')
-#     else:
-#         messages.error(request, 'Sorry, you do not have permission for that.')
-#         return redirect(reverse('home'))
-
-#     return redirect(reverse('blog_detail', args=[blog_post.id]))
+    return redirect('blog')
