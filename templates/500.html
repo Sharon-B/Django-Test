@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %}- Error 500{% endblock %}
+
+{% block page_header %}
+    <div class="header-container container">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container error-msg vertical-center">
+        <div class="row mx-auto">
+            <div class="col">
+                    <!-- Error 500 -->
+                    <p id="error-text" class="capitalize">ERROR 500 - Page Not Found</p>
+                    <p>Oopps looks like we have some issues!</p>
+                    <p>To return home please click the button below</p>
+                    <a href="{% url 'home' %}" class="btn button checkout-btn">Return Home</a>
+            </div>      
+        </div>
+    </div>
+
+{% endblock %}
