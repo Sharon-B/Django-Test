@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block page_header %}
     <div class="header-container container">
@@ -42,7 +43,7 @@
                     {% endif %}
                     <div class="card-body">
                         <p class="product-info">{{ new_arrival.name }}</p>
-                        <p class="product-info">€{{ new_arrival.price }}</p>
+                        <p class="product-info">€{{ new_arrival.price|intcomma }}</p>
                         <!-- Product edit/delete links -->
                         {% if request.user.is_superuser %}
                             <div class="edit-delete-links">

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
@@ -67,9 +68,12 @@
                 <div class="row">
                     <div class="col-12 col-md-6 offset-md-3">
                         <div class="card mb-3">
-                            <div class="card-header">
+                            <div class="card-header comment-header">
                                 <p class="p-text text-bold">{{ comment.user }}'s Comment</p>
-                                <p class="text-muted text-end">{{ comment.created_on }}</p>
+                                <span class="text-end">
+                                    <p class="text-muted">{{ comment.created_on }}</p>
+                                    <p class="text-muted mt-0">{{ comment.created_on|naturaltime }}</p>
+                                </span>
                             </div>
                             <div class="card-body">
                                 <p class="p-text">{{ comment.comment }}</p>

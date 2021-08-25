@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block extra_title %}- All Products{% endblock %}
 
@@ -75,7 +76,7 @@
                                 {% endif %}
                                 <div class="card-body">
                                     <p class="product-info">{{ product.name }}</p>
-                                    <p class="product-info">€{{ product.price }}</p>
+                                    <p class="product-info">€{{ product.price | intcomma }}</p>
                                     <!-- Product edit/delete links -->
                                     {% if request.user.is_superuser %}
                                         <div class="edit-delete-links">

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load cart_tools %}
+{% load humanize %}
 
 {% block page_header %}
     <div class="header-container container">
@@ -21,101 +22,101 @@
         <div class="row">
             <div class="col">
                 {% if cart_items %}
-                    <div class="table-responsive-lg">
-                        <table class="table table-borderless">
-                            <thead>
-                                <tr>
-                                    <th class="p-text text-bold" scope="col">Product Info</th>
-                                    <th class="p-text text-bold" scope="col"></th>
-                                    <th class="p-text text-bold" scope="col">Price</th>
-                                    <th class="p-text text-bold" scope="col">Qty</th>
-                                    <th class="p-text text-bold" scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
+                    
+                    {% for item in cart_items %}
+                        <div class="row">
 
-                            <tbody>
-                                {% for item in cart_items %}
-                                    <tr class="cart-items">
-                                        <td class="cart-item-img">
-                                            {% if item.product.image %}
-                                                <img class="img-fluid cart-img" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                            {% else %}
-                                                <img class="img-fluid cart-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            <p class="p-text text-bold">{{ item.product.name }}</p>
-                                        </td>
-                                        <td>
-                                            <p class="p-text">€{{ item.product.price }}</p>
-                                        </td>
-                                        <td>
-                                            <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
-                                                {% csrf_token %}
-                                                <div class="form-group">
-                                                    <div class="input-group cart-quantity">
-                                                        <div class="input-group-prepend">
-                                                            <button class="decrement-qty btn btn-sm btn-secondary" 
-                                                                data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                                <span>
-                                                                    <i class="fas fa-minus fa-sm"></i>
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                        <input class="form-control form-control-sm qty_input" type="number"
-                                                            name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                            data-item_id="{{ item.item_id }}"
-                                                            id="id_qty_{{ item.item_id }}">
-                                                        <div class="input-group-append">
-                                                            <button class="increment-qty btn btn-sm btn-secondary"
-                                                                data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                                <span>
-                                                                    <i class="fas fa-plus fa-sm"></i>
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <div class="update-remove">
-                                                <a class="update-link text-info"><small>Update</small></a>
-                                                <a class="remove-item text-danger float-end" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                            <!-- Product Name -->
+                            <div class="col-12">
+                                <p class="cart-item-heading text-bold">{{ item.product.name }}</p>
+                            </div>
+
+                            <!-- Product image -->
+                            <div class="col-6 cart-items">
+                                <div class="cart-item-img">
+                                    {% if item.product.image %}
+                                        <img class="img-fluid cart-img" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img class="img-fluid cart-img" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-6">
+                                <!-- Product Quantity -->
+                                <p class="p-text">Qty: {{ item.quantity }}</p>
+                        
+                                <!-- Quantity Adjust -->
+                                <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group cart-quantity">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-sm btn-secondary" 
+                                                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </span>
+                                                </button>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <p class="p-text">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                <tr class="cart-total">
-                                    <td colspan="5" class="text-end">
-                                            <p class="p-text text-bold">Cart Total: €{{ total|floatformat:2 }}</p>
-                                            <p class="p-text">Delivery: €{{ delivery|floatformat:2 }}</p>
-                                            <p class="p-text text-bold">Grand Total: €{{ grand_total|floatformat:2 }}</p>
-                                            {% if free_delivery_delta > 0 %}
-                                                <p class="text-info">
-                                                    You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
-                                                </p>
-                                            {% endif %}
-                                    </td>
-                                </tr>
-                                <tr class="cart-buttons">
-                                    <td colspan="5" class="text-end">
-                                        <!-- Continue shopping button -->
-                                        <a href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals" class="shopping-btn btn">
-                                            <span class="p-text">Continue Shopping</span>
-                                        </a>
-                                        <!-- Checkout button -->
-                                        <a href="{% url 'checkout' %}" class="button btn">
-                                            <span class="p-text">Checkout</span>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                            <input class="form-control form-control-sm qty_input" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}"
+                                                id="id_qty_{{ item.item_id }}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-sm btn-secondary"
+                                                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                    <span>
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Update/remove links -->
+                                <div class="update-remove">
+                                    <a class="update-link text-info"><small>Update</small></a>
+                                    <a class="remove-item text-danger float-end" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                </div>
+                            </div>
+                        
+                            <!-- Item Subtotal -->
+                            <div class="col-12 text-end mt-3 mb-4">
+                                <p class="p-text text-bold">Subtotal €{{ item.product.price | calc_subtotal:item.quantity|intcomma }}</p>
+                            </div> 
 
-                        </table>
+                        </div>              
+                    {% endfor %}
+                    <!-- Cart Totals -->
+                    <div class="row cart-total">
+                        <div class="col col-sm-6 text-end">
+                                <p class="p-text text-bold">Cart Total: €{{ total|floatformat:2|intcomma }}</p>
+                                <p class="p-text">Delivery: €{{ delivery|floatformat:2|intcomma }}</p>
+                                <p class="p-text text-bold">Grand Total: €{{ grand_total|floatformat:2|intcomma }}</p>
+                                {% if free_delivery_delta > 0 %}
+                                    <p class="text-info">
+                                        You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
+                                    </p>
+                                {% endif %}
+                        </div>
                     </div>
+                    <!-- Cart buttons -->
+                    <div class="row cart-buttons">
+                        <div class="col-12 text-end">
+                            <!-- Continue shopping button -->
+                            <a href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals" class="shopping-btn btn">
+                                <span class="p-text">Continue Shopping</span>
+                            </a>
+                            <!-- Checkout button -->
+                            <a href="{% url 'checkout' %}" class="button btn">
+                                <span class="p-text">Checkout</span>
+                            </a>
+                        </div>
+                    </div>
+                
                 {% else %}
+                    <!-- If cart empty -->
                     <p class="p-text">There are no items in your shopping cart.</p>
                     <a class="btn button" href="{% url 'products' %}?category=dining_sets,bistro_set,lounge_sets,chairs,sofas,benches,new_arrivals">Continue Shopping</a>
                 {% endif %}

@@ -129,6 +129,39 @@ body {
     font-size: 1.4rem;
 }
 
+/*------ Main Nav Hover -----*/
+
+/* Underline From Right */
+/* .hvr-underline-from-right {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  .hvr-underline-from-right:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 100%;
+    right: 0;
+    bottom: 0;
+    background: #2098D1;
+    height: 4px;
+    -webkit-transition-property: left;
+    transition-property: left;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+  }
+  .hvr-underline-from-right:hover:before, .hvr-underline-from-right:focus:before, .hvr-underline-from-right:active:before {
+    left: 0;
+  }
+   */
+
 /*------ Icons -------*/
 
 .icons {
@@ -358,6 +391,10 @@ body {
 
 /*------ Shopping Cart -------*/
 
+.cart-item-heading {
+    font-size: 2rem;
+}
+
 .cart-items td p {
     padding: 3rem 0;
 }
@@ -372,11 +409,11 @@ body {
 }
 
 .cart-item-img {
-    width: 30%;
+    width: 100%;
 }
 
 .cart-img {
-    padding: 3rem;
+    /* padding: 3rem; */
 }
 
 .update-remove {

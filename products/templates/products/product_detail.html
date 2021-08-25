@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block extra_title %}- {{ product.name }}{% endblock %}
 
@@ -38,7 +39,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="product-details-container">
-                        <p class="product-info text-bold">€{{ product.price }}</p>
+                        <p class="product-info text-bold">€{{ product.price | intcomma }}</p>
                         <p class="product-desc">{{ product.description }}</p>
                         <!-- Category -->
                         {% if product.category %}

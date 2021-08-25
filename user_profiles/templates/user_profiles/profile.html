@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 
 {% block extra_css %}
@@ -61,7 +62,7 @@
                                             {% endfor %}
                                         </ul>
                                     </td>
-                                    <td>€{{ order.grand_total }}</td>
+                                    <td>€{{ order.grand_total|intcomma }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
