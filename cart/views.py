@@ -7,8 +7,17 @@ from django.contrib import messages
 # Create your views here.
 # View Cart
 def view_cart(request):
-    """ A view to return the shopping cart contents page """
-    return render(request, 'cart/cart.html')
+    """
+    A view to return the shopping cart contents page
+    """
+
+    template = 'cart/cart.html'
+
+    context = {
+        'on_cart_page': True,
+    }
+
+    return render(request, template, context)
 
 
 # Add to Cart
