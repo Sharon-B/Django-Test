@@ -131,36 +131,18 @@ body {
 
 /*------ Main Nav Hover -----*/
 
-/* Underline From Right */
-/* .hvr-underline-from-right {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    position: relative;
-    overflow: hidden;
-  }
-  .hvr-underline-from-right:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 100%;
-    right: 0;
-    bottom: 0;
-    background: #2098D1;
-    height: 4px;
-    -webkit-transition-property: left;
-    transition-property: left;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-  }
-  .hvr-underline-from-right:hover:before, .hvr-underline-from-right:focus:before, .hvr-underline-from-right:active:before {
-    left: 0;
-  }
-   */
+
+#nav-menu .nav-link:hover,
+#nav-menu .nav-link:focus {
+    color: #0E5CA5;
+    transform: scale(1.2);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #0E5CA5;
+    background-color: #e9ecef;
+}
 
 /*------ Icons -------*/
 
@@ -338,6 +320,16 @@ body {
 
 .card {
     background-color: #F6F6F6;
+}
+
+.new-badge {
+    background-color: #097485;
+    color: #F6F6F6;
+    width: 5rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border-radius: 1rem;
+    height: 50%;
 }
 
 /*------ Category Badges ------*/

@@ -75,7 +75,12 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body">
-                                    <p class="product-info">{{ product.name }}</p>
+                                    <div class="d-flex">
+                                        <p class="product-info">{{ product.name }}</p>
+                                        {% if product.category.name == 'new_arrivals' %}
+                                            <span class="ms-auto new-badge">NEW</span>
+                                        {% endif %}
+                                    </div>
                                     <p class="product-info">€{{ product.price | intcomma }}</p>
                                     <!-- Product edit/delete links -->
                                     {% if request.user.is_superuser %}
