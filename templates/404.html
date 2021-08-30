@@ -15,13 +15,15 @@
 {% block content %}
 
     <div class="container vertical-center">
-        <div class="row mx-auto">
-            <div class="col">
-                    <!-- Error 404 -->
-                    <p id="404" class="large-text">ERROR 404 - Page Not Found</p>
-                    <p>We cannot find the page you were looking for</p>
-                    <p>To return home please click the button below</p>
-                    <a href="{% url 'home' %}" class="btn button dark-bg-btn text-bold large-text">Return Home</a>
+        <div class="row">
+            <div class="col-12">
+                <!-- Error 404 -->
+                <p id="404" class="heading text-center">ERROR 404 - Page Not Found</p>
+                <p class="large-text text-center"> Oh dear.....we cannot find the page you were looking for</p>
+                <p class="large-text text-center">To return home please click the button below</p>
+                <div class="text-center">
+                    <a href="{% url 'home' %}" class="btn button dark-bg-btn text-bold large-text px-5 py-3">Return Home</a>
+                </div>
             </div>      
         </div>
     </div>

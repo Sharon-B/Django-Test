@@ -244,6 +244,19 @@ body {
     color: #2D3636;
 }
 
+.large-text {
+    /* font-weight: 600; */
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+.vertical-center {
+    min-height: 50vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*------ Buttons -------*/
 
 .button {
